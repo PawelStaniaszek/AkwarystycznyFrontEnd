@@ -1,0 +1,13 @@
+<div id="container">
+  <p-card header="Zaloguj">
+<span class="p-float-label">
+  <input id="name" type="text" [(ngModel)]="login" pInputText>
+  <label for="name">Login</label>
+</span><br>
+<span class="p-float-label">
+  <input id="price" type="password" [(ngModel)]="password" pInputText>
+  <label for="price">Hasło</label>
+</span><br>
+<button pButton type="button" label="Dodaj" id="add-button" (click)="tryLogin()"></button><br>
+</p-card>
+</div>

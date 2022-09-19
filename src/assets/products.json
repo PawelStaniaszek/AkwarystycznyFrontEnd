@@ -1,0 +1,179 @@
+{
+	"data": [
+		{
+			"nazwa": "Akwarium",
+			"cena": "100",
+			"opis": "30l 45x45x45cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+		},
+    {
+      "nazwa": "Akwarium1",
+			"cena": "200",
+			"opis": "60l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "termometr",
+			"cena": "9,99",
+			"opis": "termometr klasyczny",
+			"kategoria": "Testy",
+      "obrazek": "termometr.jpg"
+    },
+    {
+      "nazwa": "Akwarium3",
+			"cena": "400",
+			"opis": "120l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium4",
+			"cena": "500",
+			"opis": "600l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+			"nazwa": "Akwarium",
+			"cena": "100",
+			"opis": "30l 45x45x45cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+		},
+    {
+      "nazwa": "Akwarium1",
+			"cena": "200",
+			"opis": "60l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium2",
+			"cena": "300",
+			"opis": "90l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium3",
+			"cena": "400",
+			"opis": "120l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium4",
+			"cena": "500",
+			"opis": "600l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+			"nazwa": "Akwarium",
+			"cena": "100",
+			"opis": "30l 45x45x45cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+		},
+    {
+      "nazwa": "Akwarium1",
+			"cena": "200",
+			"opis": "60l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium2",
+			"cena": "300",
+			"opis": "90l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium3",
+			"cena": "400",
+			"opis": "120l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium4",
+			"cena": "500",
+			"opis": "600l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+			"nazwa": "Akwarium",
+			"cena": "100",
+			"opis": "30l 45x45x45cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+		},
+    {
+      "nazwa": "Akwarium1",
+			"cena": "200",
+			"opis": "60l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium2",
+			"cena": "300",
+			"opis": "90l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium3",
+			"cena": "400",
+			"opis": "120l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium4",
+			"cena": "500",
+			"opis": "600l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+			"nazwa": "Akwarium",
+			"cena": "100",
+			"opis": "30l 45x45x45cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+		},
+    {
+      "nazwa": "Akwarium1",
+			"cena": "200",
+			"opis": "60l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium2",
+			"cena": "300",
+			"opis": "90l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium3",
+			"cena": "400",
+			"opis": "120l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    },
+    {
+      "nazwa": "Akwarium4",
+			"cena": "500",
+			"opis": "600l 80x80x80cm",
+			"kategoria": "Akwaria",
+      "obrazek": "akwa60l.jpg"
+    }
+	]
+}

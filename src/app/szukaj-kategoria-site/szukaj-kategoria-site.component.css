@@ -1,0 +1,17 @@
+.left{
+  display: block;
+  width: 20%;
+
+}
+.right{
+  display: block;
+  width: 80%;
+  float: right;
+  padding-left: 20px;
+
+}
+.container{
+  display: flex;
+  min-height: 800px;
+  max-height: 1500px;
+}

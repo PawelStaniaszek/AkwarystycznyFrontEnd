@@ -1,0 +1,29 @@
+label{
+    
+    text-align: top;
+}
+textarea{
+    resize: none;
+    width: 100%;
+}
+#container{
+    width: 500px;
+    padding: 20px;
+    padding-bottom: 30px;
+    height: 100%;
+    margin-left: 100px;
+    border-style: solid;
+    border-color: #5c5757;
+}
+input{
+    width: 100%;
+}
+select{
+    width: 100%;
+}
+#add-button{
+    float: right;
+}
+#img-button{
+    float: left;
+}

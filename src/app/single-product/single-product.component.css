@@ -1,0 +1,15 @@
+.left{
+  display: block;
+  width: 30%;
+
+}
+.right{
+  display: block;
+  width: 60%;
+  top:0px;
+  padding-left: 50px;
+
+}
+.container{
+  display: flex;
+}
