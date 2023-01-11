@@ -12,11 +12,13 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.items = [
+    this.items = 
+    [
       {
-          label: 'Strona główna',command: (event) => {
-            this.router.navigate(['/']);
-          }
+
+        label: 'Strona główna',command: (event) => {
+          this.router.navigate(['/']);
+        }
       },
       {
           label: 'Kontakt',
@@ -24,15 +26,22 @@ export class HeaderComponent implements OnInit {
       },
       {
         label: 'Koszyk',
-        icon: 'pi pi-fw pi-shopping-cart',
-    },
-    {
+        icon: 'pi pi-fw pi-shopping-cart',command: (event) => {
+          this.router.navigate(['/login']);
+        }
+      },
+      {
       label: 'Zaloguj',
       icon: 'pi pi-fw pi-sign-in',command: (event) => {
         this.router.navigate(['/login']);
       }
-  },
-
+    },
+    {
+    label: 'Rejestracja',
+      icon: 'pi pi-fw pi-send',command: (event) => {
+        this.router.navigate(['/register']);
+      }
+    },
   ];
   }
 

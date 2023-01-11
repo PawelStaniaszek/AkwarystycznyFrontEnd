@@ -1,0 +1,28 @@
+<div class="card">
+<p-dataView #dv [value]="products" [paginator]="true" [rows]="9" layout="list">
+    
+<ng-template let-produktCart pTemplate="listItem">
+    <div class="col-12">
+      <div class="product-list-item">
+        <img [src]="produktCart.product.picture" width="100px" height="100px" [alt]="produktCart.product.name" />
+        <div class="product-list-detail">
+          <div class="product-name">
+            {{produktCart.product.name}}
+          </div>
+          <div class="product-description">{{produktCart.product.description}}</div>
+        </div>
+        <div class="product-list-action">
+          <span class="product-price">{{produktCart.product.price}}zł</span>
+          <span class="product-quantity">Ilość: {{produktCart.quantity}}</span>
+          <button pButton pRipple  label="Usuń" class="p-button-danger" (click)="clickEvent(produktCart.product.id)" icon="pi pi-trash"></button>
+
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+</p-dataView>
+<h1>Suma: {{sum}}
+    <p-button icon="pi pi-shopping-cart" label="Kup teraz"></p-button>
+</h1>
+</div>

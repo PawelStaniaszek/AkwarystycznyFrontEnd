@@ -24,8 +24,10 @@ export class HeaderLoggedComponent implements OnInit {
       },
       {
         label: 'Koszyk',
-        icon: 'pi pi-fw pi-shopping-cart',
-    },
+        icon: 'pi pi-fw pi-shopping-cart',command: (event) => {
+          this.router.navigate(['/koszyk']);
+    }
+  },
     {
       label: 'Dodaj produkt',
       icon: 'pi pi-plus',command: (event) => {
@@ -36,6 +38,7 @@ export class HeaderLoggedComponent implements OnInit {
     {
       label: 'Wyloguj',
       icon: 'pi pi-fw pi-sign-in',command: (event) => {
+        sessionStorage.removeItem('token')
         this.router.navigate(['/']);
       }
   },

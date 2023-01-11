@@ -1,63 +1,59 @@
-      <div class="card">
-        <p-dataView #dv [value]="produkts" [paginator]="true" [rows]="9" filterBy="Nazwa" [sortField]="sortField"
-          [sortOrder]="sortOrder" layout="grid">
-          <ng-template pTemplate="header">
-            <div class="flex flex-column md:flex-row md:justify-content-between">
-              <p-dropdown [options]="sortOptions" placeholder="Sortuj po cenie" [(ngModel)]="sortKey"
-                (onChange)="onSortChange($event)" styleClass="mb-2 md:mb-0"></p-dropdown>
-              <span class="p-input-icon-left mb-2 md:mb-0">
-                <i class="pi pi-search"></i>
-                <input type="search" pInputText placeholder="Wyszukaj po nazwie"
-                  (input)="dv.filter($event.target.value)">
+<div class="card">
+  <p-dataView #dv [value]="produkts" [paginator]="true" [rows]="9" filterBy="name" [sortField]="sortField"
+    [sortOrder]="sortOrder" layout="grid">
+    <ng-template pTemplate="header">
+      <div class="flex flex-column md:flex-row md:justify-content-between">
+        <p-dropdown [options]="sortOptions" placeholder="Sortuj po cenie" [(ngModel)]="sortKey"
+          (onChange)="onSortChange($event)" styleClass="mb-2 md:mb-0"></p-dropdown>
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input type="search" pInputText placeholder="Wyszukaj po nazwie" (input)="dv.filter($event.target.value)">
 
-              </span>
-              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-            </div>
-          </ng-template>
-          <ng-template let-produkt pTemplate="listItem">
-            <div class="col-12">
-              <div class="product-list-item">
-                <img [src]="'http://localhost:53535/api/produkt/SaveFile?obrazek='+produkt.obrazek" width="100px" height="100px" [alt]="produkt.Nazwa" />
-                <div class="product-list-detail">
-                  <div class="product-name" [routerLink]="['../../produkt/'+produkt.Nazwa]">
-                    {{produkt.Nazwa}}
-                  </div>
-                  <div class="product-description">{{produkt.Opis}}</div>
-
-                  <i class="pi pi-tag product-category-icon"></i><span
-                    class="product-category">{{produkt.kategoria}}</span>
-                </div>
-                <div class="product-list-action">
-                  <span class="product-price">{{produkt.Cena}}zł</span>
-                  <p-button icon="pi pi-shopping-cart" label="Dodaj do koszyka"></p-button>
-
-                </div>
-              </div>
-            </div>
-          </ng-template>
-          <ng-template let-produkt pTemplate="gridItem">
-            <div class="col-12 md:col-4">
-              <div class="product-grid-item card">
-                <div class="product-grid-item-top">
-                  <div>
-                    <i class="pi pi-tag product-category-icon"></i>
-                    <span class="product-category">{{produkt.kategoria}}</span>
-                  </div>
-                </div>
-                <div class="product-grid-item-content">
-                  <img [src]="'http://localhost:53535/api/produkt/SaveFile?obrazek='+produkt.obrazek" width="100px" height="100px"
-                    [alt]="produkt.Nazwa" />
-                  <div class="product-name"><a style="text-decoration: none;color: inherit;"
-                      [routerLink]="['../../produkt/'+produkt.Nazwa]">{{produkt.Nazwa}}</a></div>
-                  <div class="product-description">{{produkt.Opis}}</div>
-                </div>
-                <div class="product-grid-item-bottom">
-                  <span class="product-price">{{produkt.Cena}}zł</span>
-                  <p-button icon="pi pi-shopping-cart"></p-button>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </p-dataView>
+        </span>
+        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
       </div>
-    
+    </ng-template>
+    <ng-template let-produkt pTemplate="listItem">
+      <div class="col-12">
+        <div class="product-list-item">
+          <img [src]="produkt.picture" width="100px" height="100px" [alt]="produkt.name" />
+          <div class="product-list-detail">
+            <div class="product-name">
+              {{produkt.name}}
+            </div>
+            <div class="product-description">{{produkt.description}}</div>
+
+            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{produkt.category}}</span>
+          </div>
+          <div class="product-list-action">
+            <span class="product-price">{{produkt.price}}zł</span>
+            <p-button icon="pi pi-shopping-cart" (click)="clickEvent(produkt.id)"></p-button>
+
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-produkt pTemplate="gridItem">
+      <div class="col-12 md:col-4">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <div>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">{{produkt.category}}</span>
+            </div>
+          </div>
+          <div class="product-grid-item-content">
+            <img [src]="produkt.picture" width="100px" height="100px" [alt]="produkt.name" />
+            <div class="product-name"><a style="text-decoration: none;color: inherit;"
+              [routerLink]="['/produkt']" [queryParams]="{Id: produkt.id}" [queryParamsHandling]= "preserve">{{produkt.name}}</a></div>
+            <div class="product-description">{{produkt.description}}</div>
+          </div>
+          <div class="product-grid-item-bottom">
+            <span class="product-price">{{produkt.price}}zł</span>
+            <p-button icon="pi pi-shopping-cart" (click)="clickEvent(produkt.id)"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

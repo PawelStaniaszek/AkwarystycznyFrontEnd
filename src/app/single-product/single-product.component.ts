@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Produkt } from '../produkt/produkt';
-import { TestServiceService } from '../test-service.service';
+import { Product } from '../../Models/Product';
+import { RequestService } from '../RequestService.service';
 
 @Component({
   selector: 'app-single-product',
@@ -9,22 +9,28 @@ import { TestServiceService } from '../test-service.service';
   styleUrls: ['./single-product.component.css'],
 })
 export class SingleProductComponent implements OnInit {
-  product: Produkt;
+  product: Product;
   myParam: string;
   constructor(
     private _Activatedroute: ActivatedRoute,
-    private _router: Router,
-    private _produktService: TestServiceService
-  ) {}
-
-  sub;
-  name;
+    private _produktService: RequestService
+  ) {
+    this.product = {
+      id: "",
+      name: "",
+      price: 0,
+      description: "",
+      longDescription: "",
+      picture: "",
+      category: undefined,
+    }
+    
+    this._Activatedroute.queryParams.subscribe({next: (params) => {
+      this.myParam = params.Id;
+      this._produktService.getOneProdukt(this.myParam).subscribe({next: (val) => {this.product = val}});
+  }})
+  }
+  id;
   ngOnInit(): void {
-    this.sub=this._Activatedroute.paramMap.subscribe(async params => {
-      console.log(params);
-       this.name = params.get('name');
-       let products=await this._produktService.getProdukt();
-       this.product=products.find(p => p.Nazwa==this.name);
-   });
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api/selectitem';
-import { TestServiceService } from '../test-service.service';
-import { Produkt } from './produkt';
-import { PrimeNGConfig } from 'primeng/api';
+import { RequestService } from '../RequestService.service';
+import { Product } from '../../Models/Product';
 
 @Component({
   selector: 'app-produkt',
@@ -10,33 +9,28 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./produkt.component.scss'],
 })
 export class ProduktComponent implements OnInit {
-  produkts: Produkt[] = [];
-  obrazki: any;
+  produkts: Product[] = [];
   sortOptions: SelectItem[] = [];
 
   sortOrder: number = 0;
 
   sortField: string = '';
 
-  constructor(private produktService: TestServiceService) {}
+  constructor(private produktService: RequestService) {
+    this.produktService.getProdukt().subscribe(val => {
+      this.produkts = val;
+    });
+  }
 
-  async ngOnInit() {
-    await this.produktService
-      .getProdukt()
-      .then((data) => (this.produkts = data))
-      .then();
-
+  ngOnInit() {
+    
     this.sortOptions = [
-      { label: 'Cena malejąco', value: '!Cena' },
-      { label: 'Cena rosnąco', value: 'Cena' },
+      { label: 'Cena malejąco', value: '!price' },
+      { label: 'Cena rosnąco', value: 'price' },
     ];
-    //await this.produkts.forEach((element) => {
-    //  this.produktService.GetPhoto(element.obrazek).then((data) =>(element.file = data))
-    //  console.log(element.Nazwa);
-    //});
   }
   
-  onSortChange(event) {
+  onSortChange(event: { value: any; }) {
     let value = event.value;
 
     if (value.indexOf('!') === 0) {
@@ -47,5 +41,13 @@ export class ProduktComponent implements OnInit {
       this.sortField = value;
     }
   }
-  singleProduct(produkt: Produkt) {}
+  clickEvent(id: String){
+    if(sessionStorage["token"] ==null){
+      alert("Aby dodać produkt musisz być zalogowany");
+    }else{
+      this.produktService.addProductToCart(id).subscribe(res=>{
+        alert("Produkt został dodany do koszyka");
+    });
+    }  
+  }
 }

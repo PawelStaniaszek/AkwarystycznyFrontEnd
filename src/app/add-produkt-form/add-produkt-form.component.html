@@ -1,26 +1,26 @@
 <div id="container">
   <p-card header="Dodaj produkt">
 <span class="p-float-label">
-  <input id="name" type="text" [(ngModel)]="produkt.Nazwa" pInputText>
+  <input id="name" type="text" [(ngModel)]="produkt.name" pInputText>
   <label for="name">Nazwa</label>
 </span><br>
 <span class="p-float-label">
-  <input id="price" type="text" [(ngModel)]="produkt.Cena" pInputText>
+  <input id="price" type="number" [(ngModel)]="produkt.price" pInputText>
   <label for="price">Cena</label>
 </span><br>
 <span class="p-float-label">
-  <input id="description" type="text" [(ngModel)]="produkt.Opis" pInputText>
+  <input id="description" type="text" [(ngModel)]="produkt.description" pInputText>
   <label for="description">Opis</label>
 </span><br>
 <span class="p-float-label">
-  <textarea id="detail" rows="5" cols="30" [(ngModel)]="produkt.Opis_dlugi" pInputTextarea ></textarea>
+  <textarea id="detail" rows="5" cols="30" [(ngModel)]="produkt.longDescription" pInputTextarea ></textarea>
   <label for="detail">Opis szczegółowy</label>
 </span>
 <br>
 <p-fileUpload mode="basic" name="demo" chooseLabel="Dodaj zdjęcie" accept="image/*" maxFileSize="1000000" [auto]="true" [customUpload]="true" (uploadHandler)="myUploader($event)"></p-fileUpload><br>
 
 <h3>Kategoria:</h3>
-<p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown><br>
+<p-dropdown [(ngModel)]="selectedCity" [options]="cities" optionLabel="name"></p-dropdown><br>
 
 <button pButton type="button" label="Dodaj" id="add-button" (click)="submit()"></button><br>
 </p-card>

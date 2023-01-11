@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api/menuitem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-site',
@@ -10,7 +10,16 @@ export class HomeSiteComponent implements OnInit {
 
   title = 'Sklep Akwarystyczny';
   searchValue: String = "";
+  private _router: Router;
+  constructor(private router: Router) {
+    this._router = router;
+   }
+
   ngOnInit() {
+
+    if(sessionStorage["token"] !=null){
+      this._router.navigate(["/zalogowany"]);
+    }
 
 
 }}

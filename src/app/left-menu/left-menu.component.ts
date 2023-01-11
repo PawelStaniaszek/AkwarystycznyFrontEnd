@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { Router } from '@angular/router';
+import { Category } from 'src/Models/Category';
+import { RequestService } from '../RequestService.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-left-menu',
@@ -8,67 +11,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./left-menu.component.css']
 })
 export class LeftMenuComponent implements OnInit {
-  items2: MenuItem[] = [];
-  constructor(private router: Router) { }
+  items: BehaviorSubject<MenuItem[]> = new BehaviorSubject<MenuItem[]>([]);
+  menus: Array<MenuItem> = [];
+  categories: Category[] = [];
+  constructor(private router: Router, private service: RequestService) { 
+    this.service.getCategories().subscribe({
+      next: (menus: Array<Category>) => {
+        var m: MenuItem[] = [];
 
-  searchByCategory(a: String){
-    this.router.navigate(['kategoria',a]);
+        menus.forEach(c => {
+
+          const item: MenuItem = {
+            label: c.name.toString(),
+            command: () =>{
+              this.searchByCategory(c);
+          }}
+
+          m.push(item);
+        });
+
+        this.items.next(m);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+  searchByCategory(a: Category){
+    this.router.navigate(['kategoria'],{queryParams: {Kategoria: a.name}});
   }
   ngOnInit(): void {
-    this.items2 = [
-      {
-          label: 'Akcesoria',command: (event) => {
-            this.searchByCategory('Akcesoria');
-        }
-
-      },
-      {
-          label: 'Akwaria',command: (event) => {
-            this.searchByCategory('Akwaria');
-        }
-
-      },
-      {
-        label: 'Rośliny',command: (event) => {
-          this.searchByCategory('Rośliny');
-      }
-      },
-      {
-      label: 'Oświetlenie',command: (event) => {
-        this.searchByCategory('Oświetlenie');
-    }
-      },
-      {
-    label: 'Filtracja',command: (event) => {
-      this.searchByCategory('Filtracja');
-  }
-    },
-    {
-    label: 'Napowietrzenie',command: (event) => {
-      this.searchByCategory('Napowietrzenie');
-  }
-    },
-    {
-     label: 'Pokarmy',command: (event) => {
-      this.searchByCategory('Pokarmy');
-  }
-    },
-    {
-     label: 'Podłoża',command: (event) => {
-      this.searchByCategory('Podłoża');
-  }
-    },
-    {
-     label: 'Testy',command: (event) => {
-      this.searchByCategory('Testy');
-  }
-    } ,
-    {
-      label: 'Preparaty',command: (event) => {
-        this.searchByCategory('Preparaty');
-    }
-    }
-  ];
+    this.items.subscribe({
+      next: (data: MenuItem[]) => this.menus = data
+    });
 }
 
 }

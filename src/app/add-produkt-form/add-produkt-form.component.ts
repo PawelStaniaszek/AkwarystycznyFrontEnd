@@ -1,64 +1,57 @@
-import { Component } from '@angular/core';
-import { Produkt } from '../produkt/produkt';
-import { TestServiceService } from '../test-service.service';
-
-interface City {
-  name: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/Models/Category';
+import { ProductPost } from 'src/Models/ProductPost';
+import { Product } from '../../Models/Product';
+import { RequestService } from '../RequestService.service';
 
 @Component({
   selector: 'app-add-produkt-form',
   templateUrl: './add-produkt-form.component.html',
   styleUrls: ['./add-produkt-form.component.css'],
 })
-export class AddProduktFormComponent {
-  cities: City[];
-  selectedCity: City;
-  produkt: Produkt;
+export class AddProduktFormComponent implements OnInit{
+  cities: Category[];
+  selectedCity: Category;
+  produkt: ProductPost;
   PhotoFileName:string;
   PhotoFilePath:string;
 
-  constructor(private produktService: TestServiceService) {
-    this.cities = [
-      { name: 'Akcesoria' },
-      { name: 'Akwaria' },
-      { name: 'Rośliny' },
-      { name: 'Oświetlenie' },
-      { name: 'Filtracja' },
-      { name: 'Napowietrzenie' },
-      { name: 'Pokarmy' },
-      { name: 'Podłoża' },
-      { name: 'Testy' },
-      { name: 'Preparaty' },
-    ];
-    this.selectedCity = this.cities[1];
+  constructor(private produktService: RequestService) {
     this.produkt = {
-      Nazwa: '',
-      Cena: 0,
-      Opis: undefined,
-      Opis_dlugi: undefined,
-      obrazek: undefined,
-      kategoria: this.selectedCity.name,
-      file: undefined
-    };
+      name: "",
+      price: 0,
+      description: "",
+      longDescription: "",
+      picture: "",
+      categoryId: undefined,
+    }
+    
   }
-
-  myUploader(event) {
-    console.log(event.files[0].name);
-    this.produkt.obrazek = event.files[0].name;
-    var file = event.files[0];
-    const formData: FormData = new FormData();
-    formData.append('uploadedFile', file, file.name);
-
-    this.produktService.UploadPhoto(formData).subscribe((data: any) => {
-      this.PhotoFileName = data.toString();
-      this.PhotoFilePath = this.produktService.PhotoUrl + this.PhotoFileName;
+  ngOnInit(): void {
+    this.produktService.getCategories().subscribe(val => {
+      this.cities = val;
+      this.selectedCity = this.cities[1];
     });
   }
+
+  myUploader(event: { files: any[]; }) {
+    this.produkt.picture = event.files[0].toString();
+    var file = event.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        this.produkt.picture=reader.result.toString();
+    };
+  }
   submit() {
-    this.produkt.kategoria = this.selectedCity.name
+    this.produkt.categoryId = this.selectedCity.id;
     this.produktService.AddProdukt(this.produkt).subscribe(res=>{
-      alert(res.toString());
-    });;
+      if(res.toString() == "1"){
+        alert("Produkt został pomyślnie dodany");
+      }else{
+        alert("Nie udało się dodać produktu "+res.toString());
+      }
+      
+    });
   }
 }

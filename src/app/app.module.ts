@@ -32,6 +32,10 @@ import { HeaderLoggedComponent } from './header-logged/header-logged.component';
 import { LoginComponent } from './login/login.component';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { ZalogowanyComponent } from './zalogowany/zalogowany.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterSiteComponent } from './register-site/register-site.component';
+import { CartComponent } from './cart/cart.component';
+import { CartSiteComponent } from './cart-site/cart-site.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import { ZalogowanyComponent } from './zalogowany/zalogowany.component';
     LoginComponent,
     LoginSiteComponent,
     ZalogowanyComponent,
+    RegisterComponent,
+    RegisterSiteComponent,
+    CartComponent,
+    CartSiteComponent,
   ],
   imports: [
     BrowserModule,

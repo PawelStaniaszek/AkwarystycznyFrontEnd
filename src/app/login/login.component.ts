@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestService } from '../RequestService.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,13 +11,23 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   password: string;
   login: string;
-  constructor(private router: Router) { }
+  private _router: Router
+  constructor(private router: Router, private service: RequestService) {
+    this._router = router;
+   }
 
   ngOnInit(): void {
+    if(sessionStorage["token"] !=null){
+      this._router.navigate(["/zalogowany"]);
+    }
   }
   tryLogin(){
-    if(this.login =="admin" && this.password=="admin"){
-      this.router.navigate(['/zalogowany']);
-    }
+
+    this.service.login(this.login, this.password).subscribe({next: (val) => {
+      sessionStorage.setItem('token', val.token.toString())
+      if(val.token.toString !=null){
+        this._router.navigate(["/zalogowany"]);
+      }
+    }});
   }
 }

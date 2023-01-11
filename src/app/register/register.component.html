@@ -1,0 +1,23 @@
+<div id="container">
+    <p-card header="Zaloguj">
+    <span class="p-float-label">
+        <input id="Email" type="text" [(ngModel)]="user.emailAddress" pInputText>
+        <label for="asd">Email</label>
+    </span><br>
+  <span class="p-float-label">
+    <input id="firstName" type="text" [(ngModel)]="user.firstName" pInputText>
+    <label for="asd">Imie</label>
+  </span><br>
+  <span class="p-float-label">
+    <input id="lastName" type="text" [(ngModel)]="user.lastName" pInputText>
+    <label for="asd">Nazwisko</label>
+  </span><br>
+  
+  <span class="p-float-label">
+    <input id="passwd" type="password" [(ngModel)]="user.password" pInputText>
+    <label for="asd">Hasło</label>
+  </span><br>
+  <button pButton type="button" label="Dodaj" id="add-button" (click)="tryRegister()"></button><br>
+  </p-card>
+  </div>
+  

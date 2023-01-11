@@ -6,14 +6,18 @@ import { SzukajKategoriaSiteComponent } from './szukaj-kategoria-site/szukaj-kat
 import { SingleProductSiteComponent } from './single-product-site/single-product-site.component';
 import { LoginSiteComponent } from './login-site/login-site.component';
 import { ZalogowanyComponent } from './zalogowany/zalogowany.component';
+import { RegisterSiteComponent } from './register-site/register-site.component';
+import { CartSiteComponent } from './cart-site/cart-site.component';
 
 const routes: Routes = [
   { path: '', component: HomeSiteComponent},
   { path: 'add', component: AddSiteComponent},
-  { path: 'kategoria/:category', component: SzukajKategoriaSiteComponent},
-  { path: 'produkt/:name', component: SingleProductSiteComponent},
+  { path: 'kategoria', component: SzukajKategoriaSiteComponent},
+  { path: 'produkt', component: SingleProductSiteComponent},
   { path: 'login', component: LoginSiteComponent},
-  { path: 'zalogowany', component: ZalogowanyComponent}
+  { path: 'zalogowany', component: ZalogowanyComponent},
+  { path: 'register', component: RegisterSiteComponent},
+  { path: 'koszyk', component: CartSiteComponent}
 
 ];
 
